@@ -1,4 +1,4 @@
-package com.busurca;
+package com.busurca.lesson;
 
 import java.util.ArrayList;
 import java.util.Scanner;
