@@ -51,24 +51,39 @@ class MobilePhone {
     }
 
     //return all contacts matching the search
-    ArrayList<Contacts> contactsMatchingSearch(String name) {
+    //don't know how to treat multiple results matching the search yet. will assume we always have only one contact matching the search
+//    ArrayList<Contacts> contactsMatchingSearch(String name) {
+//
+//        ArrayList<Contacts> searchResult = new ArrayList<>();
+//        for (Contacts contact : contacts
+//        ) {
+//            if (contact.getName().toLowerCase().contains(name.toLowerCase())) {
+//                searchResult.add(contact);
+//            }
+//        }
+//        return searchResult;
+//    }
 
-        ArrayList<Contacts> searchResult = new ArrayList<>();
-        for (Contacts contact : contacts
-        ) {
-            if (contact.getName().toLowerCase().contains(name.toLowerCase())) {
-                searchResult.add(contact);
-            }
-        }
-        return searchResult;
-    }
-
-
+    //method to modify contact
     boolean modifyContact(String nameOfContactToModify, String newName) {
 
         Contacts contactToModify = getContactByName(nameOfContactToModify);
         if (contactToModify != null) {
             contactToModify.setName(newName);
+            return true;
+        }
+
+        return false;
+
+    }
+
+    //remove contact
+    boolean removeContact(String nameOfContactToRemove){
+
+        Contacts contactToRemove = getContactByName(nameOfContactToRemove);
+
+        if(contactToRemove != null) {
+            contacts.remove(contactToRemove);
             return true;
         }
 
