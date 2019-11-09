@@ -64,12 +64,25 @@ class MobilePhone {
 //        return searchResult;
 //    }
 
-    //method to modify contact
-    boolean modifyContact(String nameOfContactToModify, String newName) {
+    //method to modify contact name
+    boolean modifyContactName(String nameOfContactToModify, String newName) {
 
         Contacts contactToModify = getContactByName(nameOfContactToModify);
         if (contactToModify != null) {
             contactToModify.setName(newName);
+            return true;
+        }
+
+        return false;
+
+    }
+
+    //method to modify contact name
+    boolean modifyContactNumber(String nameOfContactToModify, String newPhoneNumber) {
+
+        Contacts contactToModify = getContactByName(nameOfContactToModify);
+        if (contactToModify != null) {
+            contactToModify.setPhoneNumber(newPhoneNumber);
             return true;
         }
 
