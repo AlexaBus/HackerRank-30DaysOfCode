@@ -81,14 +81,14 @@ public class MainChallenge {
         System.out.println("Enter the name of the contact to modify:");
         String contactToModify = scanner.nextLine();
         String option = null;
-        if(!mobilePhone.searchContact(contactToModify)) {
+        if (!mobilePhone.searchContact(contactToModify)) {
             System.out.println("Contact does not exist! Choose option:");
         } else {
             System.out.println("Type the new name or the new phone number to update your contact");
             option = scanner.nextLine();
-            if(!option.startsWith("0") && !option.startsWith("+")) {
+            if (!option.startsWith("0") && !option.startsWith("+")) {
                 System.out.println();
-                mobilePhone.modifyContactName(contactToModify,option);
+                mobilePhone.modifyContactName(contactToModify, option);
                 System.out.println("The contact has been modified! The new details are " + mobilePhone.getContactByName(contactToModify));
             } else {
                 System.out.println();
@@ -103,7 +103,7 @@ public class MainChallenge {
 
         System.out.println("Enter the name of the contact to remove:");
         String contactToRemove = scanner.nextLine();
-        if(!mobilePhone.searchContact(contactToRemove)) {
+        if (!mobilePhone.searchContact(contactToRemove)) {
             System.out.println("Contact does not exist! Choose option:");
         } else {
             Contacts contact = mobilePhone.getContactByName(contactToRemove);
@@ -115,6 +115,25 @@ public class MainChallenge {
     }
 
     private static void searchContact() {
+
+        System.out.println("Enter a name or a number to search for:");
+        String contactToSearchFor = scanner.nextLine();
+        if (mobilePhone.getContactByName(contactToSearchFor) == null && mobilePhone.getContactByNumber(contactToSearchFor) == null) {
+            System.out.println("Contact does not exist! Choose option:");
+        } else {
+            Contacts contact;
+
+            if (mobilePhone.getContactByName(contactToSearchFor) != null) {
+                contact = mobilePhone.getContactByName(contactToSearchFor);
+            } else {
+                contact = mobilePhone.getContactByNumber(contactToSearchFor);
+            }
+
+            System.out.println(contact.toString());
+
+        }
+        printInstructions();
+
     }
 
 }

@@ -50,6 +50,23 @@ class MobilePhone {
         return contact;
     }
 
+
+    //method to get contact by name
+    Contacts getContactByNumber(String phoneNumber) {
+
+        Contacts contact = null;
+
+        for (Contacts c : contacts) {
+            String contactNumber = c.getPhoneNumber();
+            if (contactNumber.contains(phoneNumber)) {
+                contact = c;
+            }
+
+        }
+
+        return contact;
+    }
+
     //return all contacts matching the search
     //don't know how to treat multiple results matching the search yet. will assume we always have only one contact matching the search
 //    ArrayList<Contacts> contactsMatchingSearch(String name) {
